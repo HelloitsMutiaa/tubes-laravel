@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('kelas',['1(Satu)', '2(Dua)', '3(Tiga)', '4(Empat)', '5(Lima)', '6(Enam)']);
+            $table->enum('kelas',['1', '2', '3', '4', '5', '6']);
+            $table->string('no_rek')->nullable();
             $table->string('password');
             $table->enum('level', ['admin', 'siswa']);
             $table->rememberToken();
