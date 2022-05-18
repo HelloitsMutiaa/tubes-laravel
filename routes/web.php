@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/books', [App\Http\Controllers\BooksController::class, 'index'])->name('books');
+Route::get('/user', [App\Http\Controllers\UsersController::class, 'index'])->name('user');
+Route::get('/borrows', [App\Http\Controllers\BorrowsController::class, 'index'])->name('borrows');
+Route::get('/returns', [App\Http\Controllers\ReturnsController::class, 'index'])->name('returns');
