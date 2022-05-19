@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Unique;
 
-class UsersController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.user');
+        return view('login.login');
     }
 
     /**
@@ -23,10 +21,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('users.create');
+        //
     }
 
     /**
@@ -37,7 +34,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**

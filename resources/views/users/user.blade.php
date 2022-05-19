@@ -33,7 +33,7 @@
 
         <table class="table-ch">
                 <tfoot>
-                    <td><a href=""><button class="btn-secondary">Tambah</button></a></td>
+                    <td><a href="{{ route('adduser') }}"><button class="btn-secondary">Tambah</button></a></td>
                 </tfoot>
         </table>
         

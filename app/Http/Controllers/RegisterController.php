@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.user');
+        return view('login.register', [
+            'title' => 'Register',
+            'active' => 'register'
+        ]);
     }
 
     /**
@@ -23,21 +26,32 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('users.create');
+        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name'      => ['required', 'string', 'min:3'],
+            'email'     => ['required', 'email'],
+            'password'  => ['required', 'min:6'],
+            'birthday' => ['required'],
+            'class'     => ['required', 'integer', 'max:6'],
+        ]);
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tgl_lahir = $request->birthday;
+        $user->kelas = $request->class;
+        $user->level = $request->level;
+        $user->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**

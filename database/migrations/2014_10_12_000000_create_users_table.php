@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->date('tgl_lahir');
-            $table->enum('kelas', ['1', '2', '3', '4', '5', '6']);
+            $table->date('tgl_lahir')->nullable();
+            $table->integer('kelas')->nullable();
             $table->enum('level', ['admin', 'siswa']);
             $table->timestamps();
         });

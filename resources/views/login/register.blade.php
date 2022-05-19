@@ -1,45 +1,63 @@
 @extends('layouts.main')
 @section('content')
 <section class="sign">
-    <form action="" method="POST">
    <h1><span>Registrasi</span></h1> 
    <fieldset class="reg">
+    <form action="{{ route('register') }}" method="post">
+        @csrf
     <div class="form">
-        <input type="text" name="nama" required>
-        <label for="">Nama</label>
+        <input type="text" name="name" id="name" value="{{ old('name') }}">
+        <label for="name">Nama</label>
+        @error('name')
+           <div class="text-danger">
+            <h4>{{ $message }} </h4>   
+           </div> 
+        @enderror
     </div>    
     <div class="form">
-        <input type="text" name="email" required>
-        <label for="">Email</label>
-    </div>  
+        <input type="text" name="email" id="email" value="{{ old('email') }}">
+        <label for="email">Email</label>
+        @error('email')
+           <div class="text-danger">
+            <h4>{{ $message }} </h4>   
+           </div> 
+        @enderror
+    </div>
     <div class="form">
-        <input type="text" id="date" name="date" class="tgl" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" required>
-        <label for="date">Tanggal Lahir</label>
-    </div>  
-    <div class="form">
-        <select id="kategori" class="custom-select" name="kategori">
-        <option value = "">{{ __('1') }}</option>
-        <option value = "">{{ __('2') }}</option>
-        <option value = "">{{ __('3') }}</option>
-        <option value = "">{{ __('4') }}</option>
-        <option value = "">{{ __('5') }}</option>
-        <option value = "">{{ __('6') }}</option>
-        </select> 
-       <label for="kategori">{{ __('Kelas') }}</label>
-    </div> 
-    <div class="form">
-       <input type="password" name="pass" id="pwd" required>
-       <label for="">Password</label>
-       <div class="input-group-append">
-           <i class="fa fa-eye-slash" id="icon"></i>
-       </div>
+       <input type="password" name="password" id="password">
+       <label for="password">Password</label>
+       @error('password')
+           <div class="text-danger">
+            <h4>{{ $message }} </h4>   
+           </div> 
+        @enderror
    </div>  
-    <h3>Already Have an Account?<a href="login.php">Sign In</a></h3>
+     
+   <div class="form">
+    <input type="text" id="birthday" name="birthday" class="tgl" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
+    <label for="birthday">Birthday</label>
+    @error('birthday')
+       <div class="text-danger">
+        <h4>{{ $message }} </h4>   
+       </div> 
+    @enderror
+</div>  
+<div class="form">
+    <input type="text" name="class" id="class" placeholder="1 - 6">
+    <label for="class">Class</label>
+    @error('birthday')
+        <div class="text-danger">
+         <h4>{{ $message }} </h4>   
+        </div> 
+     @enderror
+</div>  
+   <input type="hidden" value="siswa" name="level" id="level">
+    <h3>Already Have an Account?<a href="{{ route('login') }}">Sign In</a></h3>
     <br/>
     <div class="add3">
-        <a href="#"><button type="submit" name="submit" class="btn-secondary">Submit</button></a> 
+        <button class="btn-secondary" type="submit">Submit</button>
     </div>
+</form>
     </fieldset> 
-    </form>
 </section>
 @endsection
