@@ -8,7 +8,7 @@
     <h1><span>Add Book</span></h1>
     <fieldset class="box">
      <div class="form">
-         <input type="text" name="judul" id="judul">
+         <input type="text" name="judul" id="judul" value="{{ old('judul') }}">
          <label for="judul">Judul</label>
     @error('judul')
        <div class="text-danger">
@@ -21,7 +21,7 @@
         <input type="file" id="cover" name="cover" multiple>
     </div>  
      <div class="form">
-         <input type="text" name="pengarang" id="pengarang">
+         <input type="text" name="pengarang" id="pengarang" value="{{ old('pengarang') }}">
          <label for="pengarang">Pengarang</label>
     @error('pengarang')
          <div class="text-danger">
@@ -30,7 +30,7 @@
       @enderror
      </div>  
      <div class="form">
-        <input type="text" name="halaman" id="halaman">
+        <input type="text" name="halaman" id="halaman" value="{{ old('halaman') }}">
         <label for="halaman">Halaman</label>
     @error('halaman')
        <div class="text-danger">

@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Traits\ImageUpload;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 
 class BooksController extends Controller
 {
@@ -45,7 +46,7 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul'      => ['required', 'string', 'min:3'],
+            'judul'      => ['required', 'string', 'max:255', 'unique:books'],
             'cover'     => ['required', 'image', 'mimes:jpeg,png,jpg'],
             'pengarang'  => ['required'],
             'halaman' => ['required'],
