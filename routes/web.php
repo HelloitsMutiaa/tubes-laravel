@@ -29,10 +29,16 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 //Books
 Route::get('/books', [App\Http\Controllers\BooksController::class, 'index'])->name('books');
+Route::get('/books/add', [App\Http\Controllers\BooksController::class, 'create'])->name('addbook');
+Route::post('/books/add', [App\Http\Controllers\BooksController::class, 'store'])->name('addbook');
+Route::delete('/books/delete/{id}', [App\Http\Controllers\BooksController::class, 'destroy'])->name('deletebook');
+Route::get('/books/edit/{id}', [App\Http\Controllers\BooksController::class, 'edit'])->name('editbook');
+Route::post('/books/update/{id}', [App\Http\Controllers\BooksController::class, 'update'])->name('updatebook');
+
 
 //Users
 Route::get('/user', [App\Http\Controllers\UsersController::class, 'index'])->name('user');
-Route::get('/user/create', [App\Http\Controllers\UsersController::class, 'create'])->name('adduser');
+
 
 //Borrows
 Route::get('/borrows', [App\Http\Controllers\BorrowsController::class, 'index'])->name('borrows');

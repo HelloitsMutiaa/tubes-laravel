@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
 <section class="sign">
-    <form action="" method="POST">
-   <h1><span>Email</span></h1> 
+    <form action="" method="post">
+   <h1><span>Login</span></h1> 
    <fieldset class="reg">
     <div class="form">
         <input type="text" name="email" required>

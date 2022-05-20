@@ -51,7 +51,7 @@ class RegisterController extends Controller
         $user->level = $request->level;
         $user->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('login');
     }
 
     /**

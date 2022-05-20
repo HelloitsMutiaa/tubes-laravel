@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Image;
+use App\Models\Book;
+use App\Traits\ImageUpload;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -13,7 +18,9 @@ class BooksController extends Controller
      */
     public function index()
     {
-        return view('books.book');
+        $no = 1;
+        $books = Book::all();
+        return view('books.book', ['books' => $books, 'no'=>$no]);
     }
 
     /**
@@ -23,7 +30,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('books.create', ['categories' => $categories]);
     }
 
     /**
@@ -32,9 +40,32 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    use ImageUpload;
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul'      => ['required', 'string', 'min:3'],
+            'cover'     => ['required', 'image', 'mimes:jpeg,png,jpg'],
+            'pengarang'  => ['required'],
+            'halaman' => ['required'],
+            'terbit'     => ['required'],
+        ]);
+
+        $book = new Book;
+        $book->judul = $request->judul;
+        $book->cover = $request->cover;
+        if($book->cover){
+            $filepath = $this->AdminImageUpload($book->cover);
+            $book->cover = $filepath;
+        }
+        $book->pengarang = $request->pengarang;
+        $book->halaman = $request->halaman;
+        $book->tahun_terbit = $request->terbit;
+        $book->kategori_id = $request->kategori;
+        $book->save();
+
+        return redirect()->route('books');
     }
 
     /**
@@ -56,7 +87,11 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        return view('books.edit', [
+            'book' => $book 
+        ]);
     }
 
     /**
@@ -68,7 +103,13 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id)->update([
+            'judul' => $request->judul,
+            'pengarang' => $request->pengarang,
+            'halaman' => $request->halaman,
+            'tahun_terbit' => $request->terbit,
+        ]);
+        return redirect()->route('books');
     }
 
     /**
@@ -79,6 +120,8 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        return redirect()->route('books');
     }
 }

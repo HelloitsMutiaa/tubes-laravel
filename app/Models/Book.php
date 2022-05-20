@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    use HasFactory;
+    public $table = 'books';
+    protected $fillable = [
+        'judul',
+        'cover',
+        'pengarang',
+        'halaman',
+        'terbit',
+        'kategori_id'
+    ];
+
+    public function categories()
+    {
+        return $this->belongsTo('App\Models\Category', 'kategori_id', 'id');
+    }
+
 }
