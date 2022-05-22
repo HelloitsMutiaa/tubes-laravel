@@ -38,6 +38,11 @@ Route::post('/books/update/{id}', [App\Http\Controllers\BooksController::class, 
 
 //Users
 Route::get('/user', [App\Http\Controllers\UsersController::class, 'index'])->name('user');
+Route::get('/user/add', [App\Http\Controllers\UsersController::class, 'create'])->name('adduser');
+Route::post('/user/add', [App\Http\Controllers\UsersController::class, 'store'])->name('adduser');
+Route::get('/user/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edituser');
+Route::post('/user/update/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('updateuser');
+Route::delete('/user/delete{id}', [App\Http\Controllers\UsersController::class, 'destroy'])->name('deleteuser');
 
 
 //Borrows

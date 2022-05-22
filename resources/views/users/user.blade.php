@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @include('layouts.sidebar')
-@section('title', 'books')
+@section('title', 'user')
 @section('content')
     
 <section class="home">
@@ -16,18 +16,24 @@
                 <th>Pilihan</th>
                 </tr>
             </thead>
-            <tbody>  
+            <tbody>
+                @foreach ($users as $user)
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $no++ }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->tgl_lahir }}</td>
+                <td>{{ $user->kelas }}</td>
                 <td>
-                    <a href=""><button class="btn-primary">Edit</button></a>
-                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button></a>
+                    <a href="{{ route('edituser', $user->id) }}"><button class="btn-primary">Edit</button></a>
+                    <form action="{{ route('deleteuser', $user->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button>
+                    </form>
                 </td>
                 </tr>
+                @endforeach
                 </tbody>
         </table>
 

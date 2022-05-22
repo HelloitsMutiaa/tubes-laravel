@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use finfo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
 
@@ -15,7 +16,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.user');
+        $no = 1;
+        $users = User::where('level', 'siswa')->get();
+        return view('users.user', ['users' => $users, 'no' => $no]);
     }
 
     /**
@@ -37,7 +40,24 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        
+       $request->validate([
+            'name'      => ['required', 'string', 'min:3'],
+            'email'     => ['required', 'email', 'unique:users'],
+            'password'  => ['required', 'min:6'],
+            'birthday' => ['required'],
+            'class'     => ['required', 'integer', 'max:6'],
+       ]);
+       
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tgl_lahir = $request->birthday;
+        $user->kelas = $request->class;
+        $user->level = $request->level;
+        $user->save();
+
+        return redirect()->route('user');
     }
 
     /**
@@ -59,7 +79,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -71,7 +94,14 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'tgl_lahir' => $request->birthday,
+            'kelas' => $request->class,
+        ]);
+
+        return redirect()->route('user');
     }
 
     /**
@@ -82,6 +112,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('user');
     }
 }
