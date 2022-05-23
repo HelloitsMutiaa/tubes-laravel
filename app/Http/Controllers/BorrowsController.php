@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Book;
+use App\Models\Borrow;
 use Illuminate\Http\Request;
 
 class BorrowsController extends Controller
@@ -13,7 +16,9 @@ class BorrowsController extends Controller
      */
     public function index()
     {
-        return view('borrows.borrow');
+        $no = 1;
+        $borrows = Borrow::all();
+        return view('borrows.borrow', ['borrows'=>$borrows, 'no'=>$no]);
     }
 
     /**
@@ -23,7 +28,9 @@ class BorrowsController extends Controller
      */
     public function create()
     {
-        //
+        $books = Book::all();
+        $users = User::where('level', 'siswa')->get();
+        return view('borrows.create', ['books'=>$books, 'users'=>$users]);
     }
 
     /**
@@ -34,7 +41,15 @@ class BorrowsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $borrow = new Borrow;
+        $borrow->book_id = $request->book;
+        $borrow->user_id = $request->nama;
+        $borrow->tgl_pinjam = null;
+        $borrow->tgl_jtempo = null;
+        $borrow->status = $request->status;
+        $borrow->save();
+
+        return redirect()->route('borrows');
     }
 
     /**
@@ -68,7 +83,13 @@ class BorrowsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $borrow = Borrow::find($id)->update([
+            'tgl_pinjam' => date('Y-m-d', strtotime(date('Y-m-d'))),
+            'tgl_jtempo' => date('Y-m-d',strtotime('+7 days',strtotime(date('Y-m-d')))),
+            'status' => 'Berhasil',
+        ]);
+
+        return redirect()->route('borrows');
     }
 
     /**

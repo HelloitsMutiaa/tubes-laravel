@@ -19,8 +19,8 @@ class CreateBorrowsTable extends Migration
             $table->foreign('book_id')->references('id')->on('books')->onDelete('restrict');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
-            $table->date('tgl_pinjam');
-            $table->date('tgl_jtempo');
+            $table->date('tgl_pinjam')->nullable();
+            $table->date('tgl_jtempo')->nullable();
             $table->enum('status', ['Proses', 'Berhasil']);
             $table->timestamps();
         });

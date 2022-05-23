@@ -8,34 +8,51 @@
     <table class="content-table">
             <thead>
                 <tr>
+                <th>No.</th>
                 <th>Buku</th>
                 <th>Nama</th>
                 <th>Tanggal Pinjam</th>
-                <th>Tanggal Lahir</th>
                 <th>Tanggal Jatuh Tempo</th>
                 <th>Status</th>
                 <th>Pilihan</th>
                 </tr>
             </thead>
-            <tbody>  
+            <tbody> 
+                @foreach ($borrows as $borrow)
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $no++ }}</td>
+                <td>{{ $borrow->books->judul }}</td>
+                <td>{{ $borrow->users->name }}</td>
                 <td>
+                @if ($borrow->tgl_pinjam == null)
+                    <h2>-</h2>
+                @else
+                    {{ $borrow->tgl_pinjam }}
+                @endif</td>
+                <td>
+                    @if ($borrow->tgl_jtempo == null)
+                        <h2>-</h2>
+                    @else
+                        {{ $borrow->tgl_jtempo }}
+                    @endif</td>
+                <td>{{ $borrow->status }}</td>
+                <td>
+                    @if ($borrow->status == 'Proses')
+                        <form action="{{ route('updateborrow', $borrow->id) }}" method="post">
+                            @csrf
+                        <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
+                    @else
                     <a href=""><button class="btn-primary">Kembali</button></a>
-                    <a href=""><button class="btn-primary">Pinjam</button></a>
+                    @endif
                 </td>
-                </tr>
+                </tr>      
+                @endforeach 
                 </tbody>
         </table>
 
         <table class="table-ch">
                 <tfoot>
-                    <td><a href=""><button class="btn-secondary">Tambah</button></a></td>
+                    <td><a href="{{ route('addborrow') }}"><button class="btn-secondary">Tambah</button></a></td>
                 </tfoot>
         </table>
         
