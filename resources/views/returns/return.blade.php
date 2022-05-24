@@ -10,34 +10,36 @@
                 <tr>
                 <th>Buku</th>
                 <th>Nama</th>
-                <th>Tanggal Pinjam</th>
                 <th>Tanggal Jatuh Tempo</th>
                 <th>Tanggal Kembali</th>
                 <th>Denda</th>
                 <th>Pilihan</th>
                 </tr>
             </thead>
-            <tbody>  
+            <tbody>
+                @foreach($kembalis as $kembali)  
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $kembali->borrows->books->judul }}</td>
+                <td>{{ $kembali->borrows->users->name }}</td>
+                <td>{{ $kembali->borrows->tgl_jtempo }}</td>
+                <td>{{ $kembali->tgl_kembali }}</td>
+                <td>{{ $kembali->denda }}</td>
                 <td>
-                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button></a>
+                    @if ($kembali->status == 'Proses')
+                        <form action="{{ route('updatereturn', $kembali->id) }}" method="post">
+                            @csrf
+                        <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
+                    @else
+                    <form action="{{ route('deletereturn', $kembali->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button></a></form>
+                    @endif
                 </td>
                 </tr>
+                @endforeach
                 </tbody>
         </table>
-
-        <table class="table-ch">
-                <tfoot>
-                    <td><a href=""><button class="btn-secondary">Tambah</button></a></td>
-                </tfoot>
-        </table>
-        
         </div>
 </section>
     

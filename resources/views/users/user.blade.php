@@ -17,9 +17,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($users as $index => $user)
                 <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{ $index + $users->firstItem() }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->tgl_lahir }}</td>
@@ -36,6 +36,7 @@
                 @endforeach
                 </tbody>
         </table>
+        {{ $users->links('vendor.pagination.custom') }}
 
         <table class="table-ch">
                 <tfoot>

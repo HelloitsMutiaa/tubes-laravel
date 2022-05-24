@@ -11,6 +11,7 @@
                 <th>No.</th>
                 <th>Buku</th>
                 <th>Nama</th>
+                <th>Kelas</th>
                 <th>Tanggal Pinjam</th>
                 <th>Tanggal Jatuh Tempo</th>
                 <th>Status</th>
@@ -23,6 +24,7 @@
                 <td>{{ $no++ }}</td>
                 <td>{{ $borrow->books->judul }}</td>
                 <td>{{ $borrow->users->name }}</td>
+                <td>{{ $borrow->users->kelas }}</td>
                 <td>
                 @if ($borrow->tgl_pinjam == null)
                     <h2>-</h2>
@@ -42,7 +44,7 @@
                             @csrf
                         <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
                     @else
-                    <a href=""><button class="btn-primary">Kembali</button></a>
+                    <a href="{{ route('addreturn', $borrow->id) }}"><button class="btn-primary">Kembali</button></a>
                     @endif
                 </td>
                 </tr>      

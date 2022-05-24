@@ -674,3 +674,25 @@ header .image-text .header-text{
 .text-danger h4{
     color: rgb(138, 26, 26);
 }
+
+.pager{
+    display: flex;
+    position: absolute;
+    color: var(--primary-color);
+}
+.pager li{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    background: var(--text-color);
+    margin: 4px;
+    border-bottom: none;
+}
+
+.pager .disabled{
+    background: var(--primary-color);
+    color: #fff;
+}

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrow;
+use App\Models\Kembali;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ReturnsController extends Controller
@@ -13,7 +16,12 @@ class ReturnsController extends Controller
      */
     public function index()
     {
-        return view('returns.return');
+        $no = 1;
+        $kembalis = Kembali::all();
+        return view('returns.return', [
+            'no' => $no,
+            'kembalis' => $kembalis,
+        ]);
     }
 
     /**
@@ -21,9 +29,27 @@ class ReturnsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $kembali = date('Y-m-d', strtotime(date('Y-m-d')));
+        $borrow = Borrow::findorFail($id);
+        $jtempo = $borrow->tgl_jtempo;
+        $k = new DateTime($kembali);
+        $j = new DateTime($jtempo);
+        $selisih = $k->diff($j);
+        $days = $selisih->format('%a');
+
+        if($k > $j){
+            $denda = 500 * $days;
+        } else{
+            $denda = 0;
+        }
+
+        return view('returns.create', [
+            'kembali' => $kembali,
+            'borrow' => $borrow,
+            'denda' => $denda
+        ]);
     }
 
     /**
@@ -34,7 +60,14 @@ class ReturnsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kembali = new Kembali();
+        $kembali->pinjam_id = $request->pinjam;
+        $kembali->tgl_kembali = $request->kembali;
+        $kembali->denda = $request->denda;
+        $kembali->status = $request->status;
+        $kembali->save();
+
+        return redirect()->route('returns');
     }
 
     /**
@@ -68,7 +101,11 @@ class ReturnsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kembali = Kembali::find($id)->update([
+            'status' => 'Kembali',
+        ]);
+
+        return redirect()->route('returns');
     }
 
     /**
@@ -79,6 +116,8 @@ class ReturnsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kembali = Kembali::find($id);
+        $kembali->delete();
+        return redirect()->route('returns');
     }
 }

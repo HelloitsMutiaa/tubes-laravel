@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kembali extends Model
 {
-    use HasFactory;
+    public $table = 'kembalis';
+    protected $fillable = [
+        'pinjam_id',
+        'tgl_kembali',
+        'denda',
+        'status'
+    ];
+
+    public function borrows(){
+        return $this->belongsTo('App\Models\Borrow', 'pinjam_id', 'id');
+    }
 }
