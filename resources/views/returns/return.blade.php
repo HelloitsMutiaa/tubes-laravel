@@ -8,6 +8,7 @@
     <table class="content-table">
             <thead>
                 <tr>
+                <th>No.</th>
                 <th>Buku</th>
                 <th>Nama</th>
                 <th>Tanggal Jatuh Tempo</th>
@@ -17,8 +18,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($kembalis as $kembali)  
+                @foreach($kembalis as $index => $kembali)  
                 <tr>
+                <td>{{ $index + $kembalis -> firstItem() }}</td>
                 <td>{{ $kembali->borrows->books->judul }}</td>
                 <td>{{ $kembali->borrows->users->name }}</td>
                 <td>{{ $kembali->borrows->tgl_jtempo }}</td>
@@ -40,6 +42,7 @@
                 @endforeach
                 </tbody>
         </table>
+        {{ $kembalis->links('vendor.pagination.custom') }}
         </div>
 </section>
     

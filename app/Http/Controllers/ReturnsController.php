@@ -17,7 +17,7 @@ class ReturnsController extends Controller
     public function index()
     {
         $no = 1;
-        $kembalis = Kembali::all();
+        $kembalis = Kembali::paginate(5);
         return view('returns.return', [
             'no' => $no,
             'kembalis' => $kembalis,
@@ -58,7 +58,7 @@ class ReturnsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $kembali = new Kembali();
         $kembali->pinjam_id = $request->pinjam;
@@ -66,6 +66,10 @@ class ReturnsController extends Controller
         $kembali->denda = $request->denda;
         $kembali->status = $request->status;
         $kembali->save();
+
+        $borrow = Borrow::find($id)->update([
+            'status' => 'Kembali',
+        ]);
 
         return redirect()->route('returns');
     }

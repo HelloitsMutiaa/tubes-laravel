@@ -17,7 +17,7 @@ class BorrowsController extends Controller
     public function index()
     {
         $no = 1;
-        $borrows = Borrow::all();
+        $borrows = Borrow::paginate(5);
         return view('borrows.borrow', ['borrows'=>$borrows, 'no'=>$no]);
     }
 
@@ -92,6 +92,15 @@ class BorrowsController extends Controller
         return redirect()->route('borrows');
     }
 
+    public function reject($id)
+    {
+        $borrow = Borrow::find($id)->update([
+            'status' => 'Tolak',
+        ]);
+
+        return redirect()->route('borrows');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -100,6 +109,8 @@ class BorrowsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $borrow = Borrow::find($id);
+        $borrow->delete();
+        return redirect()->route('borrows');
     }
 }

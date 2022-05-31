@@ -485,7 +485,6 @@ header .image-text .header-text{
 }
 
 
-
 .form input:focus ~label,
 .form input:valid ~label,
 .form select:valid ~label{
@@ -675,24 +674,41 @@ header .image-text .header-text{
     color: rgb(138, 26, 26);
 }
 
+.table-page{
+    position: relative;
+    border-collapse: collapse;
+    min-width: 1000px;
+    margin: 10px auto;
+}
 .pager{
     display: flex;
     position: absolute;
-    color: var(--primary-color);
 }
+
 .pager li{
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    font-size: 20px;
     list-style: none;
     text-align: center;
     justify-content: center;
+    border-radius: 6px;
+    font-weight: bolder;
     background: var(--text-color);
-    margin: 4px;
-    border-bottom: none;
+    margin-left: 10px;
+    border: 2px solid var(--primary-color);
+}
+
+.my-active{
+    box-shadow: 40px var(--text-color);
+}
+
+.pager a{
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .pager .disabled{
     background: var(--primary-color);
-    color: #fff;
+    color: var(--text-color);
 }

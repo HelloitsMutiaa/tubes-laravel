@@ -19,9 +19,9 @@
                 </tr>
             </thead>
             <tbody> 
-                @foreach ($books as $book)
+                @foreach ($books as $index => $book)
                 <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{ $index + $books -> firstItem() }}</td>
                 <td>{{ $book->judul }}</td>
                 <td><img src="/{{ $book->cover }}" alt=""></td>
                 <td>{{ $book->pengarang }}</td>
@@ -41,7 +41,7 @@
                 @endforeach
                 </tbody>
         </table>
-
+        {{ $books->links('vendor.pagination.custom') }}
         <table class="table-ch">
                 <tfoot>
                     <td><a href="{{ route('addbook') }}"><button class="btn-secondary">Tambah</button></a></td>

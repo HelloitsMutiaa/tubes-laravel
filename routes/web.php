@@ -50,6 +50,8 @@ Route::get('/borrows', [App\Http\Controllers\BorrowsController::class, 'index'])
 Route::get('/borrows/add', [App\Http\Controllers\BorrowsController::class, 'create'])->name('addborrow');
 Route::post('/borrows/add', [App\Http\Controllers\BorrowsController::class, 'store'])->name('addborrow');
 Route::post('/borrows/update/{id}', [App\Http\Controllers\BorrowsController::class, 'update'])->name('updateborrow');
+Route::post('/borrows/reject/{id}', [App\Http\Controllers\BorrowsController::class, 'reject'])->name('rejectborrow');
+Route::delete('/borrows/delete{id}', [App\Http\Controllers\BorrowsController::class, 'destroy'])->name('deleteborrow');
 
 //Returns
 Route::get('/returns', [App\Http\Controllers\ReturnsController::class, 'index'])->name('returns');

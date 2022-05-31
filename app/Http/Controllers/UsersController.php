@@ -17,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $no = 1;
-        $users = User::where('level', 'siswa')->paginate(1);
+        $users = User::where('level', 'siswa')->paginate(5);
         return view('users.user', ['users' => $users, 'no' => $no]);
     }
 

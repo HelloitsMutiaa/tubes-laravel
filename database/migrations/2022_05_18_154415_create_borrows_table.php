@@ -21,7 +21,7 @@ class CreateBorrowsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->date('tgl_pinjam')->nullable();
             $table->date('tgl_jtempo')->nullable();
-            $table->enum('status', ['Proses', 'Berhasil']);
+            $table->enum('status', ['Proses', 'Tolak', 'Berhasil', 'Kembali']);
             $table->timestamps();
         });
     }

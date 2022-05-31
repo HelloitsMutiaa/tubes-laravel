@@ -19,9 +19,11 @@
                 </tr>
             </thead>
             <tbody> 
-                @foreach ($borrows as $borrow)
+                @foreach ($borrows as $index => $borrow)
+                @if($borrow->status == 'Kembali')
+                @else
                 <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{ $index + $borrows -> firstItem() }}</td>
                 <td>{{ $borrow->books->judul }}</td>
                 <td>{{ $borrow->users->name }}</td>
                 <td>{{ $borrow->users->kelas }}</td>
@@ -43,14 +45,26 @@
                         <form action="{{ route('updateborrow', $borrow->id) }}" method="post">
                             @csrf
                         <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
+                        <form action="{{ route('rejectborrow', $borrow->id) }}" method="post">
+                            @csrf
+                        <a href=""><button class="btn-primary">Tolak</button></a></form>
+
+                    @elseif ($borrow->status == 'Tolak')
+                    <form action="{{ route('deleteborrow', $borrow->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button></a></form>
+
                     @else
                     <a href="{{ route('addreturn', $borrow->id) }}"><button class="btn-primary">Kembali</button></a>
                     @endif
                 </td>
-                </tr>      
+                </tr> 
+                @endif     
                 @endforeach 
                 </tbody>
         </table>
+        {{ $borrows->links('vendor.pagination.custom') }}
 
         <table class="table-ch">
                 <tfoot>

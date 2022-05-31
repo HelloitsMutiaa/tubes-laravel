@@ -1,5 +1,7 @@
 
 @if ($paginator->hasPages())
+<table class="table-page">
+    <tr><td>
 <ul class="pager">
    
     @if ($paginator->onFirstPage())
@@ -21,7 +23,7 @@
         @if (is_array($element))
             @foreach ($element as $page => $url)
                 @if ($page == $paginator->currentPage())
-                    <li class="active my-active"><span>{{ $page }}</span></li>
+                    <li class="disabled"><span>{{ $page }}</span></li>
                 @else
                     <li><a href="{{ $url }}">{{ $page }}</a></li>
                 @endif
@@ -36,5 +38,5 @@
     @else
         <li class="disabled"><span>→</span></li>
     @endif
-</ul>
+</ul></td></tr></table>
 @endif 
