@@ -15,17 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 //Login
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
-
-//Register
-Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('login');
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 //Dashboard
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+//Register
+Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register')->middleware('guest');
+
+//Dashboard
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 //Books
 Route::get('/books', [App\Http\Controllers\BooksController::class, 'index'])->name('books');

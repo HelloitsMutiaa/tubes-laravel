@@ -50,7 +50,7 @@
             </div>
             <div class="bottom-content">
                 <li class="nav-link">
-                    <a href="../Registrasi/logout.php">
+                    <a href="{{ route('logout') }}">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Log Out</span>
                     </a>
