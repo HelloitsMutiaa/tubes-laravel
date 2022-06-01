@@ -7,7 +7,7 @@
    <fieldset class="reg">
     <div class="form">
         <input type="text" name="email" id="email">
-        <label for="">Username</label>
+        <label for="">Email</label>
     </div>     
     <div class="form">
        <input type="password" id="password" name="password">
