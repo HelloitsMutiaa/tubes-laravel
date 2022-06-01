@@ -29,13 +29,16 @@
                 <td>{{ $book->tahun_terbit }}</td>
                 <td>{{ $book->categories->kategori }}</td>
                 <td>
-                    
+                    @if (auth()->user()->level=="admin")
                     <a href="{{ route('editbook', $book->id) }}"><button class="btn-primary">Edit</button></a>
                     <form action="{{ route('deletebook', $book->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                     <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
-                    </form>
+                    </form> 
+                    @else
+                    <a href="{{ route('editbook', $book->id) }}"><button class="btn-primary">Pinjam</button></a> 
+                    @endif
                 </td>
                 </tr>
                 @endforeach
