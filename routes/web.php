@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +24,14 @@ Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->na
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
-//Dashboard
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
-
 //Register
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register')->middleware('guest');
+
+//ADMIN & SISWA
+Route::group(['middleware' => 'auth'], function(){
+//Dashboard
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 //Books
 Route::get('/books', [App\Http\Controllers\BooksController::class, 'index'])->name('books');
@@ -36,8 +40,9 @@ Route::post('/books/add', [App\Http\Controllers\BooksController::class, 'store']
 Route::delete('/books/delete/{id}', [App\Http\Controllers\BooksController::class, 'destroy'])->name('deletebook');
 Route::get('/books/edit/{id}', [App\Http\Controllers\BooksController::class, 'edit'])->name('editbook');
 Route::post('/books/update/{id}', [App\Http\Controllers\BooksController::class, 'update'])->name('updatebook');
+});
 
-//Admin
+//ADMIN
 Route::group(['middleware'=> ['auth', 'ceklevel:admin']], function(){
 
 //Users
@@ -66,8 +71,13 @@ Route::post('/returns/update/{id}', [App\Http\Controllers\ReturnsController::cla
 
 });
 
-
+//SISWA
 Route::group(['middleware'=> ['auth', 'ceklevel:siswa']], function(){
+
+//user
+Route::get('/siswa', [App\Http\Controllers\User\UserController::class, 'index'])->name('siswa');
+Route::get('/siswa/edit/{id}', [App\Http\Controllers\User\UserController::class, 'edit'])->name('editsiswa');
+Route::post('/siswa/update/{id}', [App\Http\Controllers\User\UserController::class, 'update'])->name('updatesiswa');
 
 });
 

@@ -18,7 +18,7 @@ class BorrowsController extends Controller
     {
         $no = 1;
         $borrows = Borrow::paginate(5);
-        return view('borrows.borrow', ['borrows'=>$borrows, 'no'=>$no]);
+        return view('Admin.borrows.borrow', ['borrows'=>$borrows, 'no'=>$no]);
     }
 
     /**
@@ -30,7 +30,7 @@ class BorrowsController extends Controller
     {
         $books = Book::all();
         $users = User::where('level', 'siswa')->get();
-        return view('borrows.create', ['books'=>$books, 'users'=>$users]);
+        return view('Admin.borrows.create', ['books'=>$books, 'users'=>$users]);
     }
 
     /**

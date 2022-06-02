@@ -380,6 +380,7 @@ header .image-text .header-text{
     margin: 30px auto;
     border-spacing: 50px 0;
     color: var(--text-color);
+    font-weight: bolder;
 }
 
 .table-us td{

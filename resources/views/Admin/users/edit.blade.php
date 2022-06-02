@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @include('layouts.sidebar')
-@section('title', 'addUser')
+@section('title', 'updateUser')
 @section('content')
 <section class="home">
     <form action="{{ route('updateuser', $user->id) }}" method="post">

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use finfo;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $no = 1;
-        $users = User::where('level', 'siswa')->paginate(5);
-        return view('Admin.users.user', ['users' => $users, 'no' => $no]);
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
+        return view('siswa.user.user', ['user' => $user]);
     }
 
     /**
@@ -26,10 +25,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('Admin.users.create');
+        //
     }
 
     /**
@@ -40,24 +38,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
-            'name'      => ['required', 'string', 'min:3'],
-            'email'     => ['required', 'email', 'unique:users'],
-            'password'  => ['required', 'min:6'],
-            'birthday' => ['required'],
-            'class'     => ['required', 'integer', 'max:6'],
-       ]);
-       
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->tgl_lahir = $request->birthday;
-        $user->kelas = $request->class;
-        $user->level = $request->level;
-        $user->save();
-
-        return redirect()->route('user');
+        //
     }
 
     /**
@@ -79,8 +60,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        $id = Auth()->user()->id;
         $user = User::findOrFail($id);
-        return view('Admin.users.edit', [
+        return view('Siswa.user.edit', [
             'user' => $user
         ]);
     }
@@ -94,6 +76,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = Auth::user()->id;
         $user = User::find($id)->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -101,7 +84,7 @@ class UsersController extends Controller
             'kelas' => $request->class,
         ]);
 
-        return redirect()->route('user');
+        return redirect()->route('siswa');
     }
 
     /**
@@ -112,8 +95,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->route('user');
+        //
     }
 }

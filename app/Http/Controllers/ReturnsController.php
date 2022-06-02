@@ -18,7 +18,7 @@ class ReturnsController extends Controller
     {
         $no = 1;
         $kembalis = Kembali::paginate(5);
-        return view('returns.return', [
+        return view('Admin.returns.return', [
             'no' => $no,
             'kembalis' => $kembalis,
         ]);
@@ -45,7 +45,7 @@ class ReturnsController extends Controller
             $denda = 0;
         }
 
-        return view('returns.create', [
+        return view('Admin.returns.create', [
             'kembali' => $kembali,
             'borrow' => $borrow,
             'denda' => $denda
