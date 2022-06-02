@@ -48,26 +48,26 @@
                             <span class="text nav-text">Pengembalian</span>
                         </a></li>
                     @else
-                    <li class="nav-link {{ 'user' == request()->path() ? 'active' : '' }}">
-                        <a href="{{ route('user') }}">
+                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
+                        <a href="{{ }}">
                             <i class='bx bx-user icon'></i>
                             <span class="text nav-text">{{ auth()->user()->name }}</span>
                         </a>
                     </li>
-                    <li class="nav-link {{ 'books' == request()->path() ? 'active' : '' }}">
+                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
                         <a href="{{ route('books') }}">
                             <i class='bx bx-library icon'></i>
                             <span class="text nav-text">Books</span>
                         </a>
                     </li>
-                    <li class="nav-link {{ 'borrows' == request()->path() ? 'active' : '' }}">
-                        <a href="{{ route('borrows') }}">
+                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
+                        <a href="{{  }}">
                             <i class='bx bx-time-five icon'></i>
                             <span class="text nav-text">Peminjaman</span>
                         </a>
                     </li>
-                    <li class="nav-link {{ 'returns' == request()->path() ? 'active' : '' }}">
-                        <a href="{{ route('returns') }}">
+                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
+                        <a href="{{ }}">
                             <i class='bx bx-check icon'></i>
                             <span class="text nav-text">Pengembalian</span>
                         </a></li>
