@@ -45,11 +45,13 @@
                 </tbody>
         </table>
         {{ $books->links('vendor.pagination.custom') }}
+        @if (auth()->user()->level=="admin")
         <table class="table-ch">
-                <tfoot>
-                    <td><a href="{{ route('addbook') }}"><button class="btn-secondary">Tambah</button></a></td>
-                </tfoot>
+            <tfoot>
+                <td><a href="{{ route('addbook') }}"><button class="btn-secondary">Tambah</button></a></td>
+            </tfoot>
         </table>
+        @endif
         
         </div>
 </section>
