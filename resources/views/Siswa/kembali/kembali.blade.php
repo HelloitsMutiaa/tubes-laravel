@@ -17,25 +17,19 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($kembalis as $kembali)  
+                @foreach($kembalis as $index => $kembali)  
                 <tr>
-                <td></td>
+                <td>{{ $index + $kembalis -> firstItem() }}</td>
                 <td>{{ $kembali->borrows->books->judul }}</td>
                 <td>{{ $kembali->borrows->tgl_jtempo }}</td>
                 <td>{{ $kembali->tgl_kembali }}</td>
                 <td>{{ $kembali->denda }}</td>
-                <td>
-                    @if ($kembali->status == 'Proses')
-                        {{ __('Unpaid') }}
-                    @else
-                        {{ __('Paid') }}
-                    @endif
-                </td>
+                <td>{{ $kembali->status }}</td>
                 </tr>
                 @endforeach
                 </tbody>
         </table>
-
+        {{ $kembalis->links('vendor.pagination.custom') }}
         </div>
 </section>
     

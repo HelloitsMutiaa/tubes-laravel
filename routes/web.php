@@ -68,7 +68,6 @@ Route::post('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class,
 Route::delete('/returns/delete{id}', [App\Http\Controllers\ReturnsController::class, 'destroy'])->name('deletereturn');
 Route::post('/returns/update/{id}', [App\Http\Controllers\ReturnsController::class, 'update'])->name('updatereturn');
 
-
 });
 
 //SISWA

@@ -7,6 +7,8 @@ use App\Models\Borrow;
 use DateTime;
 use App\Models\Kembali;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KembaliController extends Controller
 {
@@ -17,7 +19,11 @@ class KembaliController extends Controller
      */
     public function index()
     {
-        return view('Siswa.kembali.kembali');
+        $id = Auth::user()->id;
+        $kembalis = Kembali::join('borrows', 'kembalis.pinjam_id', '=', 'borrows.id')
+        ->where('borrows.user_id', '=', $id)
+        ->paginate(5);
+        return view('Siswa.kembali.kembali', ['kembalis'=>$kembalis]);
     }
 
     /**
@@ -67,7 +73,7 @@ class KembaliController extends Controller
             'status' => 'Kembali',
         ]);
 
-        return redirect()->route('returns');
+        return redirect()->route('kembali');
     }
 
     /**
