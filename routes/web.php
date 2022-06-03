@@ -79,5 +79,16 @@ Route::get('/siswa', [App\Http\Controllers\User\UserController::class, 'index'])
 Route::get('/siswa/edit/{id}', [App\Http\Controllers\User\UserController::class, 'edit'])->name('editsiswa');
 Route::post('/siswa/update/{id}', [App\Http\Controllers\User\UserController::class, 'update'])->name('updatesiswa');
 
+//pinjam
+Route::get('/pinjam', [App\Http\Controllers\User\PinjamController::class, 'index'])->name('pinjam');
+Route::get('/pinjam/add/{id}', [App\Http\Controllers\User\PinjamController::class, 'create'])->name('addpinjam');
+Route::post('/pinjam/add/{id}', [App\Http\Controllers\User\PinjamController::class, 'store'])->name('addpinjam');
+Route::delete('/pinjam/delete/{id}', [App\Http\Controllers\User\PinjamController::class, 'destroy'])->name('deletepinjam');
+
+//kembali
+Route::get('/kembali', [App\Http\Controllers\User\KembaliController::class, 'index'])->name('kembali');
+Route::get('/kembali/add/{id}', [App\Http\Controllers\User\KembaliController::class, 'create'])->name('addkembali');
+Route::post('/kembali/add/{id}', [App\Http\Controllers\User\KembaliController::class, 'store'])->name('addkembali');
+
 });
 

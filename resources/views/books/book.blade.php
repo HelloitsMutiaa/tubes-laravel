@@ -37,7 +37,7 @@
                     <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
                     </form> 
                     @else
-                    <a href="{{ route('editbook', $book->id) }}"><button class="btn-primary">Pinjam</button></a> 
+                    <a href="{{ route('addpinjam', $book->id) }}"><button class="btn-primary">Pinjam</button></a> 
                     @endif
                 </td>
                 </tr>

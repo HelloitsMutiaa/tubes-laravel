@@ -60,14 +60,14 @@
                             <span class="text nav-text">Books</span>
                         </a>
                     </li>
-                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
-                        <a href="">
+                    <li class="nav-link {{ 'pinjam' == request()->path() ? 'active' : '' }}">
+                        <a href="{{ route('pinjam') }}">
                             <i class='bx bx-time-five icon'></i>
                             <span class="text nav-text">Peminjaman</span>
                         </a>
                     </li>
-                    <li class="nav-link {{ '' == request()->path() ? 'active' : '' }}">
-                        <a href="">
+                    <li class="nav-link {{ 'kembali' == request()->path() ? 'active' : '' }}">
+                        <a href="{{ route('kembali') }}">
                             <i class='bx bx-check icon'></i>
                             <span class="text nav-text">Pengembalian</span>
                         </a></li>

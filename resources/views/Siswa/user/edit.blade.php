@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @include('layouts.sidebar')
-@section('title', 'editSiswa')
+@section('title', 'Siswa')
 @section('content')
 <section class="home">
     <form action="{{ route('updatesiswa', auth()->user()->id) }}" method="post">
