@@ -8,7 +8,7 @@
                 
                 <div class="text header-text">
                     <span class="name">Perpuskuy</span>
-                    <span class="profession">SDN 123456</span>
+                    <span class="profession">readmore</span>
                 </div>
             </div>
 
