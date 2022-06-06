@@ -22,6 +22,7 @@
             sidebar.classList.toggle("close");
         }
     </script>
+    <script type="text/javascript" src="{{ asset('print.js') }}"></script>
     
     </body>
     </html>

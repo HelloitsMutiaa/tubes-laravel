@@ -20,13 +20,13 @@ Route::get('/index', function(){
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name('home');
 
 //Login
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('login');
-Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 //Register
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register')->middleware('guest');
@@ -71,6 +71,11 @@ Route::get('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 
 Route::post('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 'store'])->name('addreturn');
 Route::post('/returns/update/{id}', [App\Http\Controllers\ReturnsController::class, 'update'])->name('updatereturn');
 Route::delete('/returns/delete{id}', [App\Http\Controllers\ReturnsController::class, 'destroy'])->name('deletereturn');
+
+//Prints
+Route::get('/prints', [App\Http\Controllers\PrintController::class, 'index'])->name('prints');
+Route::get('/prints/user', [App\Http\Controllers\PrintController::class, 'printuser'])->name('datasiswa');
+Route::get('/prints/buku', [App\Http\Controllers\PrintController::class, 'printbuku'])->name('databuku');
 
 });
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,8 +72,14 @@
       <img src="{{ asset('images/logo.png') }}" width="50" height="50" class="d-inline-block align-top ml-5">
     </p>
     <ul class="up">
-        <li><a href="">Login&nbsp;&nbsp;</a></li>
-        <li><a href="">&nbsp;&nbsp;Register</a></li>
+      @if (Route::has('login'))
+      @auth
+      <li><a href="{{ route('dashboard') }}">Dashboard&nbsp;&nbsp;</a></li>
+      @else
+      <li><a href="{{ route('login') }}">Login&nbsp;&nbsp;</a></li>
+      <li><a href="{{ route('register') }}">&nbsp;&nbsp;Register</a></li>
+      @endauth
+      @endif
     </ul>
   </nav>
 
@@ -81,11 +87,23 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title mt-5 ml-5">Perpuskuy</h2>
+          @if (Route::has('login'))
+          @auth
+          <h2 class="card-title mt-5 ml-5">Welcome Back {{ Auth::user()->name }}</h2>
+          @else
+          <h2 class="card-title mt-5 ml-5">Join Perpuskuy</h2>
+          @endauth
+          @endif
           <h6 class="card-text my-md-5 ml-5">The more that you READ, the more things you will KNOW. 
               The more that you LEARN, the more places you will GO.
           </h6>
-          <a href="#" class="btn btn-ku ml-5">Get Started</a>
+          @if (Route::has('login'))
+          @auth
+          <a href="{{ route('dashboard') }}" class="btn btn-ku ml-5">Start Again</a>
+          @else
+          <a href="{{ route('register') }}" class="btn btn-ku ml-5">Get Started</a>
+          @endauth
+          @endif
         </div>
       </div>
     </div>

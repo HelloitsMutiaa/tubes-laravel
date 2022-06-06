@@ -47,6 +47,11 @@
                             <i class='bx bx-check icon'></i>
                             <span class="text nav-text">Pengembalian</span>
                         </a></li>
+                        <li class="nav-link {{ 'prints' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('prints') }}">
+                                <i class='bx bx-check icon'></i>
+                                <span class="text nav-text">Print</span>
+                            </a></li>
                     @else
                     <li class="nav-link {{ 'siswa' == request()->path() ? 'active' : '' }}">
                         <a href="{{ route('siswa') }}">
