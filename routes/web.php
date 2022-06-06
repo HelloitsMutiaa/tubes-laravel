@@ -69,8 +69,8 @@ Route::delete('/borrows/delete{id}', [App\Http\Controllers\BorrowsController::cl
 Route::get('/returns', [App\Http\Controllers\ReturnsController::class, 'index'])->name('returns');
 Route::get('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 'create'])->name('addreturn');
 Route::post('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 'store'])->name('addreturn');
-Route::delete('/returns/delete{id}', [App\Http\Controllers\ReturnsController::class, 'destroy'])->name('deletereturn');
 Route::post('/returns/update/{id}', [App\Http\Controllers\ReturnsController::class, 'update'])->name('updatereturn');
+Route::delete('/returns/delete{id}', [App\Http\Controllers\ReturnsController::class, 'destroy'])->name('deletereturn');
 
 });
 

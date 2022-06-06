@@ -64,7 +64,7 @@ class ReturnsController extends Controller
         $kembali->pinjam_id = $request->pinjam;
         $kembali->tgl_kembali = $request->kembali;
         $kembali->denda = $request->denda;
-        $kembali->status = $request->status;
+        $kembali->keterangan = $request->status;
         $kembali->save();
 
         $borrow = Borrow::find($id)->update([
@@ -103,10 +103,11 @@ class ReturnsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $kembali = Kembali::find($id)->update([
-            'status' => 'Kembali',
+        $kembali = Kembali::findorFail($id);
+        $kembali->update([
+            $kembali->keterangan = 'Paid',
         ]);
 
         return redirect()->route('returns');

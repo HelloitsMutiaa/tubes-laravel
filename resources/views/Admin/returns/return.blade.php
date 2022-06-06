@@ -27,10 +27,10 @@
                 <td>{{ $kembali->tgl_kembali }}</td>
                 <td>{{ $kembali->denda }}</td>
                 <td>
-                    @if ($kembali->status == 'Proses')
-                        <form action="{{ route('updatereturn', $kembali->id) }}" method="post">
-                            @csrf
-                        <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
+                    @if ($kembali->keterangan == 'Unpaid')
+                    <form action="{{ route('updatereturn', $kembali->id) }}" method="post">
+                        @csrf
+                        <a href=""><button class="btn-primary" name="submit">Konfirmasi</button></a></form>
                     @else
                     <form action="{{ route('deletereturn', $kembali->id) }}" method="post">
                         @csrf

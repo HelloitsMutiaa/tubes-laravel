@@ -24,7 +24,7 @@
                 <td>{{ $kembali->borrows->tgl_jtempo }}</td>
                 <td>{{ $kembali->tgl_kembali }}</td>
                 <td>{{ $kembali->denda }}</td>
-                <td>{{ $kembali->status }}</td>
+                <td>{{ $kembali->keterangan }}</td>
                 </tr>
                 @endforeach
                 </tbody>

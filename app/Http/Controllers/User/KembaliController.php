@@ -66,7 +66,7 @@ class KembaliController extends Controller
         $kembali->pinjam_id = $request->pinjam;
         $kembali->tgl_kembali = $request->kembali;
         $kembali->denda = $request->denda;
-        $kembali->status = $request->status;
+        $kembali->keterangan = $request->status;
         $kembali->save();
 
         $borrow = Borrow::find($id)->update([

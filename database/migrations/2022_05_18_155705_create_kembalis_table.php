@@ -19,7 +19,7 @@ class CreateKembalisTable extends Migration
             $table->foreign('pinjam_id')->references('id')->on('borrows')->onDelete('restrict');
             $table->date('tgl_kembali');
             $table->integer('denda');
-            $table->enum('status', ['Proses', 'Kembali']);
+            $table->enum('keterangan', ['Paid', 'Unpaid']);
             $table->timestamps();
         });
     }

@@ -53,7 +53,7 @@
             </div> 
          @enderror
         </div>  
-        <input type="hidden" name="status" id="status" value="Proses">
+        <input type="hidden" name="status" id="status" value="Unpaid">
      <div class="add2">
          <a href="#"><button class="btn-secondary" name="submit">Submit</button></a> 
      </div>
