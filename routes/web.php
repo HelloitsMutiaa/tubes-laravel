@@ -56,6 +56,7 @@ Route::post('/user/add', [App\Http\Controllers\UsersController::class, 'store'])
 Route::get('/user/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('edituser');
 Route::post('/user/update/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('updateuser');
 Route::delete('/user/delete{id}', [App\Http\Controllers\UsersController::class, 'destroy'])->name('deleteuser');
+Route::get('/users/print', [App\Http\Controllers\UsersController::class, 'print'])->name('cetak-siswa');
 
 //Borrows
 Route::get('/borrows', [App\Http\Controllers\BorrowsController::class, 'index'])->name('borrows');
@@ -71,11 +72,6 @@ Route::get('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 
 Route::post('/returns/add/{id}', [App\Http\Controllers\ReturnsController::class, 'store'])->name('addreturn');
 Route::post('/returns/update/{id}', [App\Http\Controllers\ReturnsController::class, 'update'])->name('updatereturn');
 Route::delete('/returns/delete{id}', [App\Http\Controllers\ReturnsController::class, 'destroy'])->name('deletereturn');
-
-//Prints
-Route::get('/prints', [App\Http\Controllers\PrintController::class, 'index'])->name('prints');
-Route::get('/prints/user', [App\Http\Controllers\PrintController::class, 'printuser'])->name('datasiswa');
-Route::get('/prints/buku', [App\Http\Controllers\PrintController::class, 'printbuku'])->name('databuku');
 
 });
 

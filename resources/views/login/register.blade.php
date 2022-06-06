@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'regitrasi')
+@section('title', 'register')
 @section('content')
 <section class="sign">
    <h1><span>Registrasi</span></h1> 

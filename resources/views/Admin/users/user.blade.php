@@ -40,7 +40,10 @@
 
         <table class="table-ch">
                 <tfoot>
+                    <tr>
                     <td><a href="{{ route('adduser') }}"><button class="btn-secondary">Tambah</button></a></td>
+                    <td><a href="{{ route('cetak-siswa') }}" target="_blank"><button class="btn-secondary">Cetak</button></a></td>
+                    </tr>
                 </tfoot>
         </table>
         

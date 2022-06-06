@@ -378,7 +378,7 @@ header .image-text .header-text{
     border-collapse: separate;
     font-size: 20px;
     margin: 30px auto;
-    border-spacing: 50px 0;
+    border-spacing: 0px 0;
     color: var(--text-color);
     font-weight: bolder;
 }

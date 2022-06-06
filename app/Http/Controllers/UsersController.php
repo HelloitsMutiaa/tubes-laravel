@@ -21,6 +21,13 @@ class UsersController extends Controller
         return view('Admin.users.user', ['users' => $users, 'no' => $no]);
     }
 
+    public function print()
+    {
+        $no = 1;
+        $users = User::where('level', 'siswa')->get();
+        return view('Admin.users.print', ['users' => $users, 'no' => $no]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

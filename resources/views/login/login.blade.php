@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'login')
 @section('content')
 <section class="sign">
     <form action="{{ route('login') }}" method="post">
