@@ -23,6 +23,7 @@ class BooksController extends Controller
             $books = Book::join('categories', 'books.kategori_id', '=', 'categories.id')
             ->where('judul', 'LIKE', '%'.$request->search.'%')
             ->orWhere('categories.kategori', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('pengarang', 'LIKE', '%'.$request->search.'%')
             ->orderBy('judul', 'ASC')
             ->paginate(5); 
         }else{
