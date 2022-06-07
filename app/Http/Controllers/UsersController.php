@@ -14,11 +14,17 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $no = 1;
-        $users = User::where('level', 'siswa')->paginate(5);
-        return view('Admin.users.user', ['users' => $users, 'no' => $no]);
+        if($request->has('search')){
+            $users = User::where('name', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('kelas', 'LIKE', '%'.$request->search.'%')
+            ->orderBy('name', 'ASC')
+            ->paginate(5);
+        } else {
+        $users = User::where('level', 'siswa')->orderBy('kelas','ASC')->paginate(5);
+        }
+        return view('Admin.users.user', ['users' => $users]);
     }
 
     public function print()

@@ -14,11 +14,25 @@ class BorrowsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+    {        
+        if($request->has('search')){
+            $borrows = Borrow::join('users', 'borrows.user_id', '=', 'users.id')
+            ->where('users.name', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('users.kelas', 'LIKE', '%'.$request->search.'%')
+            ->OrderBy('tgl_pinjam', 'ASC')
+            ->paginate(5);
+        } else {
+            $borrows = Borrow::paginate(5);
+        }
+        return view('Admin.borrows.borrow', ['borrows'=>$borrows]);
+    }
+
+    public function printpinjam()
     {
         $no = 1;
-        $borrows = Borrow::paginate(5);
-        return view('Admin.borrows.borrow', ['borrows'=>$borrows, 'no'=>$no]);
+        $borrows = Borrow::where('status', 'Kembali')->get();
+        return view('Admin.borrows.print', ['borrows'=>$borrows, 'no'=>$no]);
     }
 
     /**
@@ -29,7 +43,9 @@ class BorrowsController extends Controller
     public function create()
     {
         $books = Book::all();
-        $users = User::where('level', 'siswa')->get();
+        $users = User::where('level', 'siswa')
+        ->orderBY('kelas', 'ASC')
+        ->get();
         return view('Admin.borrows.create', ['books'=>$books, 'users'=>$users]);
     }
 

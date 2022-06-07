@@ -17,11 +17,27 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+    {
+        if($request->has('search')){
+            $books = Book::join('categories', 'books.kategori_id', '=', 'categories.id')
+            ->where('judul', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('categories.kategori', 'LIKE', '%'.$request->search.'%')
+            ->orderBy('judul', 'ASC')
+            ->paginate(5); 
+        }else{
+        $books = Book::join('categories', 'books.kategori_id', '=', 'categories.id')
+        ->orderBy('judul', 'ASC')
+        ->paginate(5);
+        }
+        return view('books.book', ['books' => $books]);
+    }
+
+    public function printbuku()
     {
         $no = 1;
-        $books = Book::paginate(5);
-        return view('books.book', ['books' => $books, 'no'=>$no]);
+        $books = Book::all();
+        return view('books.print', ['books' => $books, 'no'=>$no]);
     }
 
     /**

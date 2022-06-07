@@ -4,7 +4,31 @@
 @section('content')
     
 <section class="home">
-    <h1><span>Data User</span></h1>
+    <h1 style="margin-bottom: 0px;"><span>Data User</span></h1>
+    <table class="choice"><tr>
+        <td>
+            <a href="{{ route('cetak-siswa') }}" target="_blank"><button class="btn-choice"><i class='bx bxs-printer bx-sm'></i></button></a>
+        </td>
+        <td>
+            <a href="{{ route('adduser') }}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
+        </td>
+        <td>
+        <div class="container">
+                <form action="{{ route('user') }}" method="GET">
+                <table class="elementscontainer">
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Search" class="search" name="search">
+                        </td>
+                        <td>
+                            <a href="#">
+                                <button type="submit" class="btn-search" name="cari"><i class="bx bx-search bx-sm"></i></button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+            </div></td></tr></table>
     <table class="content-table">
             <thead>
                 <tr>
@@ -37,16 +61,6 @@
                 </tbody>
         </table>
         {{ $users->links('vendor.pagination.custom') }}
-
-        <table class="table-ch">
-                <tfoot>
-                    <tr>
-                    <td><a href="{{ route('adduser') }}"><button class="btn-secondary">Tambah</button></a></td>
-                    <td><a href="{{ route('cetak-siswa') }}" target="_blank"><button class="btn-secondary">Cetak</button></a></td>
-                    </tr>
-                </tfoot>
-        </table>
-        
         </div>
 </section>
     

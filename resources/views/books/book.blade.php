@@ -4,7 +4,51 @@
 @section('content')
     
 <section class="home">
-    <h1><span>Data Buku</span></h1>
+    <h1 style="margin-bottom: 0px;"><span>Data Buku</span></h1>
+    <table class="choice">
+        <tr>
+            @if(auth()->user()->level=="admin")
+        <td>
+            <a href="{{ route('cetak-buku') }}" target="_blank"><button class="btn-choice"><i class='bx bxs-printer bx-sm'></i></button></a>
+        </td>
+        <td>
+            <a href="{{ route('addbook') }}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
+        </td>
+        <td>
+            <div class="container">
+                    <form action="{{ route('books') }}" method="GET">
+                    <table class="elementscontainer">
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Search" class="search" name="search">
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <button type="submit" class="btn-search" name="cari"><i class="bx bx-search bx-sm"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                </div></td>
+        @else
+        <td>
+        <div class="container">
+                <form action="{{ route('books') }}" method="GET">
+                <table class="elementscontainer">
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Search" class="search" name="search">
+                        </td>
+                        <td>
+                            <a href="#">
+                                <button type="submit" class="btn-search" name="cari"><i class="bx bx-search bx-sm"></i></button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+            </div></td>@endif</tr></table>
     <table class="content-table">
             <thead>
                 <tr>
@@ -45,14 +89,6 @@
                 </tbody>
         </table>
         {{ $books->links('vendor.pagination.custom') }}
-        @if (auth()->user()->level=="admin")
-        <table class="table-ch">
-            <tfoot>
-                <td><a href="{{ route('addbook') }}"><button class="btn-secondary">Tambah</button></a></td>
-            </tfoot>
-        </table>
-        @endif
-        
         </div>
 </section>
     

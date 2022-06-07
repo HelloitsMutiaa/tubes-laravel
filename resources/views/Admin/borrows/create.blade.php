@@ -18,7 +18,7 @@
         <div class="form">
             <select id="nama" class="custom-select" name="nama">
            @foreach ($users as $user)
-            <option value = "{{ $user->id }}">{{ $user->name }}</option>
+            <option value = "{{ $user->id }}">{{ $user->name }}({{ $user->kelas }})</option>
             @endforeach
             </select> 
            <label for="nama">Nama</label>

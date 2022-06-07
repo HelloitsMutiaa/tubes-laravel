@@ -44,6 +44,7 @@ Route::post('/books/add', [App\Http\Controllers\BooksController::class, 'store']
 Route::delete('/books/delete/{id}', [App\Http\Controllers\BooksController::class, 'destroy'])->name('deletebook');
 Route::get('/books/edit/{id}', [App\Http\Controllers\BooksController::class, 'edit'])->name('editbook');
 Route::post('/books/update/{id}', [App\Http\Controllers\BooksController::class, 'update'])->name('updatebook');
+Route::get('/books/print', [App\Http\Controllers\BooksController::class, 'printbuku'])->name('cetak-buku');
 });
 
 //ADMIN
@@ -65,6 +66,7 @@ Route::post('/borrows/add', [App\Http\Controllers\BorrowsController::class, 'sto
 Route::post('/borrows/update/{id}', [App\Http\Controllers\BorrowsController::class, 'update'])->name('updateborrow');
 Route::post('/borrows/reject/{id}', [App\Http\Controllers\BorrowsController::class, 'reject'])->name('rejectborrow');
 Route::delete('/borrows/delete{id}', [App\Http\Controllers\BorrowsController::class, 'destroy'])->name('deleteborrow');
+Route::get('/borrows/print', [App\Http\Controllers\BorrowsController::class, 'printpinjam'])->name('cetak-pinjam');
 
 //Returns
 Route::get('/returns', [App\Http\Controllers\ReturnsController::class, 'index'])->name('returns');
