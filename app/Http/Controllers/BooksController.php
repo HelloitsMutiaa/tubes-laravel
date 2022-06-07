@@ -27,8 +27,7 @@ class BooksController extends Controller
             ->orderBy('judul', 'ASC')
             ->paginate(5); 
         }else{
-        $books = Book::join('categories', 'books.kategori_id', '=', 'categories.id')
-        ->orderBy('judul', 'ASC')
+        $books = Book::orderBy('judul', 'ASC')
         ->paginate(5);
         }
         return view('books.book', ['books' => $books]);
