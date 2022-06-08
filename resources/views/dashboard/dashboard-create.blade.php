@@ -7,8 +7,9 @@
     <h1 style="margin-bottom: 0px;"><span>Forum</span></h1>
     
         <fieldset class="box">
-            <form action="{{ route('dashboard.store') }}" method="post">
+            <form action="{{ route('dashboard.create') }}" method="post"  enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" value="{{ auth()->user()->id }}" name="user" id="user">
                 <div class="form">
                     <input type="text" name="title" id="title" value="">
                     <label for="title">Judul Karya</label>

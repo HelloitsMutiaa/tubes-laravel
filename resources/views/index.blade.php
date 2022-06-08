@@ -74,7 +74,7 @@
     <ul class="up">
       @if (Route::has('login'))
       @auth
-      <li><a href="{{ route('dashboard') }}">Dashboard&nbsp;&nbsp;</a></li>
+      <li><a href="{{ route('post') }}">Dashboard&nbsp;&nbsp;</a></li>
       @else
       <li><a href="{{ route('login') }}">Login&nbsp;&nbsp;</a></li>
       <li><a href="{{ route('register') }}">&nbsp;&nbsp;Register</a></li>
@@ -99,7 +99,7 @@
           </h6>
           @if (Route::has('login'))
           @auth
-          <a href="{{ route('dashboard') }}" class="btn btn-ku ml-5">Start Again</a>
+          <a href="{{ route('post') }}" class="btn btn-ku ml-5">Start Again</a>
           @else
           <a href="{{ route('register') }}" class="btn btn-ku ml-5">Get Started</a>
           @endauth

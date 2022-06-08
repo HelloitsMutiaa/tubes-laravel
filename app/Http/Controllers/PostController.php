@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Traits\KaryaUpload;
 
 class PostController extends Controller
 {
@@ -25,10 +26,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Post $post)
+    public function create()
     {
 
-        return view('dashboard.dashboard-create', compact('post'));
+        return view('dashboard.dashboard-create');
     }
 
     /**
@@ -37,10 +38,21 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\PostRequest $request)
+    use KaryaUpload;
+    public function store(Request $request)
     {
-        $request->user()->posts()->create($request->all());
-        return redirect()->route('dashboard.dashboard')->with('success', 'Data berhasil ditambahkan');
+        $post = new Post;
+        $post->user_id = $request->user;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->image = $request->image;
+        if($post->image){
+            $filepath = $this->UserImageUpload($post->image);
+            $post->image = $filepath;
+        }
+        $post->save();
+        
+        return redirect()->route('post')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

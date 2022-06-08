@@ -29,16 +29,17 @@
                 </form>
         </div></td></tr></table>
     
-        @foreach($posts as $post)
+      
 
-        <div class="mt-3">
-        <fieldset class="box">   
+        <div class="images">
+            @foreach($posts as $post)
+        <div class="image-box">   
             <h2><b>{{$post->user->name}}</b></h2>
             {{-- <h2><b>Putrija Malau</b></h2> --}}
             <h5>{{ $post->created_at->diffForHumans() }}</h5>
-            <img src="image/{{$post->image}}" alt="">
+            <img src="/{{$post->image}}" alt="">
             <h3>{{$post->title}}</h3>
-            <p>{{$post->description}}</p>
+            <p style="text-overflow: hidden">{{$post->description}}</p>
             <div align="center">
                 <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-primary">Edit</button></a>
                 <form action="{{ route('dashboard.destroy', $post->id) }}" method="post">
@@ -47,11 +48,10 @@
                 <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
                 </form> 
             </div>
-        </fieldset>
-        <br>
         </div>
-                    
         @endforeach
+            </div>
+                    
 
         
 
