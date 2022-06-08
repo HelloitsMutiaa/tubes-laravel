@@ -35,12 +35,13 @@ Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store
 //ADMIN & SISWA
 Route::group(['middleware' => 'auth'], function () {
     //Dashboard
-    Route::get('/dashboard', [App\Http\Controllers\PostController::class, 'index'])->name('post');
+    Route::get('/post', [App\Http\Controllers\PostController::class, 'index'])->name('post');
     Route::get('/dashboard/create', [App\Http\Controllers\PostController::class, 'create'])->name('dashboard.create');
     Route::post('/dashboard/create', [App\Http\Controllers\PostController::class, 'store'])->name('dashboard.create');
     Route::get('/dashboard/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('dashboard.edit');
     Route::put('/dashboard/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('dashboard.update');
     Route::delete('/dashboard/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('dashboard.destroy');
+    Route::get('/dashboard/see/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('seepost');
 
     //Books
     Route::get('/books', [App\Http\Controllers\BooksController::class, 'index'])->name('books');

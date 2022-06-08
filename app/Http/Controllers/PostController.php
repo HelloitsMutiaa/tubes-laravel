@@ -28,7 +28,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         return view('dashboard.dashboard-create');
     }
 
@@ -61,9 +60,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('dashboard.see', compact('post'));
     }
 
     /**
@@ -106,6 +106,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Post $post)
     {
         $post->delete();

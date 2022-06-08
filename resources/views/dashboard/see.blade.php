@@ -38,7 +38,7 @@
             {{-- <h2><b>Putrija Malau</b></h2> --}}
             <h5>{{ $post->created_at->diffForHumans() }}</h5>
             <img src="/{{$post->image}}" alt="">
-            <a href="{{ route('seepost', $post->id) }}"><h3>{{ $post->title }}</h3></a>
+            <h3>{{ $post->title }}</h3>
             <div align="center">
                 <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-primary">Edit</button></a>
                 <form action="{{ route('dashboard.destroy', $post->id) }}" method="post">
