@@ -17,8 +17,8 @@
         <div class="menu_bar">
             <div class="menu">
                 <ul class="menu-links">
-                    <li class="nav-link {{ 'dashboard' == request()->path() ? 'active' : '' }}">
-                        <a href="{{ route('dashboard') }}">
+                    <li class="nav-link {{ 'post' == request()->path() ? 'active' : '' }}">
+                        <a href="{{ route('post') }}">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>

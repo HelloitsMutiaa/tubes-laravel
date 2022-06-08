@@ -9,7 +9,7 @@
         <tr>
             <td><p>Upload Karyamu</p></td>
         <td>
-            <a href="{{route('d-create')}}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
+            <a href=""><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
         </td>
         <td>
         <div class="container">
@@ -29,28 +29,20 @@
                 </form>
         </div></td></tr></table>
     
-        @foreach($posts as $post)
-
-        <div>
-        <fieldset class="box">   
-            {{-- <h2><b>{{$post->author->name}}</b></h2> --}}
-            <h2><b>Putrija Malau</b></h2>
-            <h5>Dipost beberapa detik yang lalu</h5>
-            <img src="image/{{$post->image}}" alt="">
-            <h3>Judul</h3>
-            <p>Deskripsi lalala</p>
-            <a href=""><button class="btn-primary">Edit</button></a>
-            <form action="" method="post">
-                @csrf
-                @method('DELETE')
-            <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
-            </form> 
+        <fieldset class="box">
+        <div class="form">
+         <input type="text" name="judul_karya" id="judul_karya" value="">
+         <label for="judul_karya">Judul Karya</label>
+        </div> 
+        <div class="form">
+            <label for="karya"><a class="btn-upload" rel="nofollow">Karya</a></label>
+            <input type="file" id="karya" name="karya" multiple>
+        </div>  
+        <div class="form">
+         <input type="text" name="deskripsi" id="deskripsi" value="">
+         <label for="deskripsi">Deskripsi</label>
+        </div> 
         </fieldset>
-        </div>
-                    
-        @endforeach
-
-        
 
 
 
