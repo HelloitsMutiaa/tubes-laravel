@@ -29,6 +29,9 @@
                 </table>
                 </form>
             </div></td></tr></table>
+            <div class="show">
+                <small><b>Showing {{ $users->count() }} from {{ $users->total() }} Data<b></small>
+            </div>
     <table class="content-table">
             <thead>
                 <tr>
@@ -59,6 +62,7 @@
                 </tr>
                 @endforeach
                 </tbody>
+                
         </table>
         {{ $users->links('vendor.pagination.custom') }}
         </div>

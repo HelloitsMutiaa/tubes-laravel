@@ -523,6 +523,11 @@ header .image-text .header-text{
     border-spacing: 10px;
 }
 
+.show{
+    position: static;
+    transform: translateX(5%);
+}
+
 .container{
     width: 220px;
     height: 42px;

@@ -30,7 +30,9 @@ class UsersController extends Controller
     public function print()
     {
         $no = 1;
-        $users = User::where('level', 'siswa')->get();
+        $users = User::where('level', 'siswa')
+        ->orderBy('kelas', 'ASC')
+        ->get();
         return view('Admin.users.print', ['users' => $users, 'no' => $no]);
     }
 

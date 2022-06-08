@@ -49,6 +49,9 @@
                 </table>
                 </form>
             </div></td>@endif</tr></table>
+            <div class="show">
+                <small><b>Showing {{ $books->count() }} from {{ $books->total() }} Data<b></small>
+            </div>
     <table class="content-table">
             <thead>
                 <tr>
