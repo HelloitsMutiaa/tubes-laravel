@@ -27,6 +27,7 @@ class PostController extends Controller
      */
     public function create(Post $post)
     {
+
         return view('dashboard.dashboard-create', compact('post'));
     }
 
@@ -39,8 +40,7 @@ class PostController extends Controller
     public function store(Requests\PostRequest $request)
     {
         $request->user()->posts()->create($request->all());
-
-        return redirect('/dashboard/dashboard')->with('message', 'Data berhasil disimpan');
+        return redirect()->route('dashboard.dashboard')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -60,9 +60,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('dashboard.dashboard-edit', compact('post'));
     }
 
     /**
@@ -72,9 +73,19 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+
+    private function handleRequest($request)
     {
-        //
+        $data = $request->all();
+        return $data;
+    }
+
+    public function update(Requests\PostRequest $request, $id)
+    {
+        $post = Post::findfOrFail($id);
+        $data = $this->handleRequest($request);
+        $post->update($data);
+        return redirect(route('post'))->with('message', 'Data berhasil Diperbaharui');
     }
 
     /**
@@ -85,6 +96,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('post')->with('success', 'Data berhasil dihapus');
     }
 }

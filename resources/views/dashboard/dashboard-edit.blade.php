@@ -7,18 +7,15 @@
     <h1 style="margin-bottom: 0px;"><span>Forum</span></h1>
     
         <fieldset class="box">
-            <form action="{{ route('dashboard.store') }}" method="post">
+            <form action="{{ route('dashboard.update', $post->id) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="form">
-                    <input type="text" name="title" id="title" value="">
+                    <input type="text" name="title" id="title" value="{{ $post->title }}">
                     <label for="title">Judul Karya</label>
                 </div> 
                 <div class="form">
-                    <label for="image"><a class="btn-upload" rel="nofollow">Karya</a></label>
-                    <input type="file" id="image" name="image" multiple>
-                </div>  
-                <div class="form">
-                    <input type="text" name="description" id="description" value="">
+                    <input type="text" name="description" id="description" value="{{ $post->description }}">
                     <label for="description">Deskripsi</label>
                 </div>
                 <div align="center">

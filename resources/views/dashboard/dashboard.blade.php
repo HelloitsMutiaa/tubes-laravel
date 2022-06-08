@@ -9,7 +9,7 @@
         <tr>
             <td><p>Upload Karyamu</p></td>
         <td>
-            <a href="{{route('d-create')}}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
+            <a href="{{route('dashboard.create')}}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
         </td>
         <td>
         <div class="container">
@@ -31,21 +31,24 @@
     
         @foreach($posts as $post)
 
-        <div>
+        <div class="mt-3">
         <fieldset class="box">   
-            {{-- <h2><b>{{$post->author->name}}</b></h2> --}}
-            <h2><b>Putrija Malau</b></h2>
-            <h5>Dipost beberapa detik yang lalu</h5>
+            <h2><b>{{$post->user->name}}</b></h2>
+            {{-- <h2><b>Putrija Malau</b></h2> --}}
+            <h5>{{ $post->created_at->diffForHumans() }}</h5>
             <img src="image/{{$post->image}}" alt="">
-            <h3>Judul</h3>
-            <p>Deskripsi lalala</p>
-            <a href=""><button class="btn-primary">Edit</button></a>
-            <form action="" method="post">
-                @csrf
-                @method('DELETE')
-            <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
-            </form> 
+            <h3>{{$post->title}}</h3>
+            <p>{{$post->description}}</p>
+            <div align="center">
+                <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-primary">Edit</button></a>
+                <form action="{{ route('dashboard.destroy', $post->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
+                </form> 
+            </div>
         </fieldset>
+        <br>
         </div>
                     
         @endforeach
