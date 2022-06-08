@@ -15,9 +15,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        if($request->has('search')){
+            $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
+            ->where('title', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('users.name', 'LIKE', '%'.$request->search.'%')
+            ->get();
+        } else {
+        $posts = Post::all();}
         return view('dashboard.dashboard', compact('posts'));
     }
 
@@ -92,12 +98,13 @@ class PostController extends Controller
         return $data;
     }
 
-    public function update(Requests\PostRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $post = Post::findfOrFail($id);
-        $data = $this->handleRequest($request);
-        $post->update($data);
-        return redirect(route('post'))->with('message', 'Data berhasil Diperbaharui');
+        $post = Post::find($id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+        return redirect(route('post'))->with('alert', 'Data berhasil Diperbaharui');
     }
 
     /**
@@ -107,8 +114,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Post $post)
+    public function destroy($id)
     {
+        $post = Post::find($id);
         $post->delete();
         return redirect()->route('post')->with('success', 'Data berhasil dihapus');
     }

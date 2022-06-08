@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/create', [App\Http\Controllers\PostController::class, 'create'])->name('dashboard.create');
     Route::post('/dashboard/create', [App\Http\Controllers\PostController::class, 'store'])->name('dashboard.create');
     Route::get('/dashboard/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('dashboard.edit');
-    Route::put('/dashboard/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('dashboard.update');
+    Route::post('/dashboard/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('dashboard.update');
     Route::delete('/dashboard/delete/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('dashboard.destroy');
     Route::get('/dashboard/see/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('seepost');
 

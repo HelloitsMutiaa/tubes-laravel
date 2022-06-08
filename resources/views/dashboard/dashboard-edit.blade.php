@@ -9,7 +9,6 @@
         <fieldset class="box">
             <form action="{{ route('dashboard.update', $post->id) }}" method="post">
                 @csrf
-                @method('PUT')
                 <div class="form">
                     <input type="text" name="title" id="title" value="{{ $post->title }}">
                     <label for="title">Judul Karya</label>

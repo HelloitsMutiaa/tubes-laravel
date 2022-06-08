@@ -34,19 +34,10 @@
         <div class="images">
             @foreach($posts as $post)
         <div class="image-box">   
-            <h2><b>{{$post->user->name}}</b></h2>
+            <h4><b>{{$post->user->name}}</b></h4>
             {{-- <h2><b>Putrija Malau</b></h2> --}}
-            <h5>{{ $post->created_at->diffForHumans() }}</h5>
             <img src="/{{$post->image}}" alt="">
-            <a href="{{ route('seepost', $post->id) }}"><h3>{{ $post->title }}</h3></a>
-            <div align="center">
-                <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-primary">Edit</button></a>
-                <form action="{{ route('dashboard.destroy', $post->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
-                </form> 
-            </div>
+            <a href="{{ route('seepost', $post->id) }}" style="text-decoration: none; color: #31485f;"><h4>{{ $post->title }}</h4></a>
         </div>
         @endforeach
             </div>

@@ -8,6 +8,7 @@
     <link href="{{ asset('assets/style.css') }}" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <script src="//cdn.ckeditor.com/4.17.1/basic/ckeditor.js"></script>
     <title>@yield('title')-{{ __('Perpuskuy') }}</title>
 </head>
 <body>

@@ -559,11 +559,12 @@ header .image-text .header-text{
 
 .images .image-box{
     position: relative;
-    height: 400px;
+    height: 300px;
     width: 210px;
     border-radius: 6px;
     overflow: hidden;
     margin: 8px;
+    text-align: center;
 }
 
 .images{
@@ -574,7 +575,7 @@ header .image-text .header-text{
 }
 
 .images .image-box img{
-    height: 30%;
+    height: 50%;
     width: 100%;
     border-radius: 6px;
     transition: var(--tran-02) linear;
@@ -734,4 +735,18 @@ header .image-text .header-text{
 .pager .disabled{
     background: var(--primary-color);
     color: var(--text-color);
+}
+
+.post{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.post img{
+    height: 300px;
+    width: 400px;
+}
+textarea{
+    margin-left: 100px;
 }
