@@ -13,11 +13,14 @@
                     <input type="text" name="title" id="title" value="{{ $post->title }}">
                     <label for="title">Judul Karya</label>
                 </div> 
-                <div class="form">
-                    <input type="text" name="description" id="description" value="{{ $post->description }}">
-                    <label for="description">Deskripsi</label>
+                <div class="desc">
+                    <label for="description" style="font-size: 20px">Deskripsi</label>
+                    <textarea name="description" id="description" value="">{!! $post->description !!}</textarea>
+                    <script>
+                        CKEDITOR.replace( 'description' );
+                    </script>
                 </div>
-                <div align="center">
+                <div align="center" style="margin-top: 300px">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>     

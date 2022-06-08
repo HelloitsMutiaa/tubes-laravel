@@ -18,10 +18,15 @@
                     <label for="image"><a class="btn-upload" rel="nofollow">Karya</a></label>
                     <input type="file" id="image" name="image" multiple>
                 </div>  
-                <div class="form">
-                    <input type="text" name="description" id="description" value="">
-                    <label for="description">Deskripsi</label>
-                </div>
+                <div class="desc">
+                    <label for="description" style="font-size: 20px">Deskripsi</label>
+                    <textarea name="description" id="description" value=""></textarea>
+                    <script>
+                        CKEDITOR.replace( 'description' );
+                    </script>
+                </div><br><br>
+                <br>
+                <br><br><br>
                 <div align="center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

@@ -377,6 +377,7 @@ header .image-text .header-text{
 }
 
 .box{
+    height: 100%;
     position: static;
     margin: 0 300px 0 300px;
     padding-bottom: 50px;
@@ -436,11 +437,23 @@ header .image-text .header-text{
     background: var(--sidebar-color);
 }
 
-.form{
+.form, .desc{
     width: 400px;
     height: 60px;
     margin: 50px auto;
     position: relative;
+}
+
+.desc label{
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    color: solid var(--toggle-color);
+    text-transform: capitalize;
+    font-size: 20px;
+    transition: top var(--tran-03);
+    padding: 0px 5px;
+    display: inline-block;
 }
 
 .form input{

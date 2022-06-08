@@ -12,7 +12,7 @@
             <img src="/{{$post->image}}" alt="" class="post">
             <br>
             <br>
-            <p>{{ $post->description }}</p>
+            <p>{!! $post->description !!}</p>
             <br>
             <small><span>Created By: {{ $post->user->name }}</span></small><br>
             <small><span>{{ $post->created_at->diffForHumans() }}</span></small>
