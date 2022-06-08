@@ -24,10 +24,8 @@
                     <script>
                         CKEDITOR.replace( 'description' );
                     </script>
-                </div><br><br>
-                <br>
-                <br><br><br>
-                <div align="center">
+                </div>
+                <div align="center" style="margin-top: 250px;">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>     
