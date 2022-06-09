@@ -36,7 +36,7 @@
      
    <div class="form">
     <input type="text" id="birthday" name="birthday" class="tgl" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
-    <label for="birthday">Birthday</label>
+    <label for="birthday">Tanggal Lahir</label>
     @error('birthday')
        <div class="text-danger">
         <h4>{{ $message }} </h4>   

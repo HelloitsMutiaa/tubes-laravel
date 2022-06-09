@@ -17,7 +17,7 @@
            <i class="fa fa-eye-slash" id="icon"></i>
        </div>
    </div>  
-    <h3>Don't Have an Account ?<a href="{{ route('register') }}">Sign Up</a></h3>
+    <h3>Belum Memiliki Akun ?<a href="{{ route('register') }}">Daftar</a></h3>
     <br/>
     <div class="add3">
         <a href="#"><button class="btn-secondary" name="submit">Submit</button></a> 
