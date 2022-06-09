@@ -7,7 +7,15 @@
     <h1 style="margin-bottom: 0px;"><span>Forum</span></h1>
     <table class="choice">
         <tr>
-            <td><p><b>Upload Karyamu<b></p></td>
+            <td>
+                <button class="btn-secondary"><h6>Total Siswa: {{ $user->count() }}</h6></button>
+            </td>
+            <td>
+                <button class="btn-secondary"><h6>Peminjaman: {{ $pinjam->count() }}</h6></button>
+            </td>
+        <td>
+            <button class="btn-secondary"><h6>Total Karya: {{ $posts->count() }}</h6></button>
+        </td>
         <td>
             <a href="{{route('dashboard.create')}}"><button class="btn-choice"><i class='bx bxs-file-plus bx-sm'></i></button></a>
         </td>
@@ -17,7 +25,7 @@
                 <table class="elementscontainer">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search" class="search" name="search">
+                            <input type="text" placeholder="Cari" class="search" name="search">
                         </td>
                         <td>
                             <a href="#">

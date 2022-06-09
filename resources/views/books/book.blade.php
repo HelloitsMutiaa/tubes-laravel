@@ -38,7 +38,7 @@
                 <table class="elementscontainer">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search" class="search" name="search">
+                            <input type="text" placeholder="Cari" class="search" name="search">
                         </td>
                         <td>
                             <a href="#">
@@ -77,14 +77,14 @@
                 <td>{{ $book->categories->kategori }}</td>
                 <td>
                     @if (auth()->user()->level=="admin")
-                    <a href="{{ route('editbook', $book->id) }}"><button class="btn-primary">Edit</button></a>
+                    <a href="{{ route('editbook', $book->id) }}"><button class="btn-primary"><i class='bx bxs-edit-alt bx-sm'></i></button></a>
                     <form action="{{ route('deletebook', $book->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Delete</button>
+                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');"><i class='bx bxs-trash bx-sm'></i></button>
                     </form> 
                     @else
-                    <a href="{{ route('addpinjam', $book->id) }}"><button class="btn-primary">Pinjam</button></a> 
+                    <a href="{{ route('addpinjam', $book->id) }}"><button class="btn-primary"><i class='bx bxs-hand-right bx-sm'></i></button></a> 
                     @endif
                 </td>
                 </tr>

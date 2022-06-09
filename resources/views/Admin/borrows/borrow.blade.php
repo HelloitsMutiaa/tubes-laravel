@@ -18,7 +18,7 @@
             <table class="elementscontainer">
                 <tr>
                     <td>
-                        <input type="text" placeholder="Search" class="search" name="search">
+                        <input type="text" placeholder="Cari" class="search" name="search">
                     </td>
                     <td>
                         <a href="#">
@@ -68,19 +68,19 @@
                     @if ($borrow->status == 'Proses')
                         <form action="{{ route('updateborrow', $borrow->id) }}" method="post">
                             @csrf
-                        <a href=""><button class="btn-primary">Konfirmasi</button></a></form>
+                        <a href=""><button class="btn-primary"><i class='bx bx-check-double icon bx-sm'></i></button></a></form>
                         <form action="{{ route('rejectborrow', $borrow->id) }}" method="post">
                             @csrf
-                        <a href=""><button class="btn-primary">Tolak</button></a></form>
+                        <a href=""><button class="btn-primary"><i class='bx bx-x bx-sm'></i></button></a></form>
 
                     @elseif ($borrow->status == 'Tolak')
                     <form action="{{ route('deleteborrow', $borrow->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button></a></form>
+                    <a href=""><button class="btn-primary" onclick="return confirm('Are You Sure ?');"><i class='bx bxs-trash bx-sm'></i></button></a></form>
 
                     @else
-                    <a href="{{ route('addreturn', $borrow->id) }}"><button class="btn-primary">Kembali</button></a>
+                    <a href="{{ route('addreturn', $borrow->id) }}"><button class="btn-primary"><i class='bx bxs-hand-right bx-sm'></i></button></a>
                     @endif
                 </td>
                 </tr> 

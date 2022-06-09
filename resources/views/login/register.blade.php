@@ -2,7 +2,7 @@
 @section('title', 'register')
 @section('content')
 <section class="sign">
-   <h1><span>Registrasi</span></h1> 
+   <h1><span>Daftar</span></h1> 
    <fieldset class="reg">
     <form action="{{ route('register') }}" method="post">
         @csrf

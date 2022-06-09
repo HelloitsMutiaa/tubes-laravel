@@ -6,7 +6,7 @@
 <section class="home">
     <h1><span>Data User</span></h1>
     <fieldset class="boks">
-        <h2 class="tape"><span>Profile</span></h2>
+        <h2 class="tape"><span>Data Diri</span></h2>
         <table class="table-us">
         <input type="hidden" name="id" value="{{ $user->id }}">
             <tr>
@@ -30,7 +30,7 @@
                 <td>:&nbsp;&nbsp;&nbsp;{{ $user->level }}</td>
             </tr>
             <tfoot>
-                <td><a href="{{ route('editsiswa', auth()->user()->id) }}"><button class="btn-secondary">Edit</button></a></td>
+                <td><a href="{{ route('editsiswa', auth()->user()->id) }}"><button class="btn-secondary"><i class='bx bxs-edit-alt bx-sm'></i></button></a></td>
             </tfoot>
         </table>
 

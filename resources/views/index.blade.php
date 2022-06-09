@@ -89,19 +89,19 @@
         <div class="card-body">
           @if (Route::has('login'))
           @auth
-          <h2 class="card-title mt-5 ml-5">Welcome Back {{ Auth::user()->name }}</h2>
+          <h2 class="card-title mt-5 ml-5">Selamat Datang {{ Auth::user()->name }}</h2>
           @else
-          <h2 class="card-title mt-5 ml-5">Join Perpuskuy</h2>
+          <h2 class="card-title mt-5 ml-5">Perpuskuy</h2>
           @endauth
           @endif
-          <h6 class="card-text my-md-5 ml-5">The more that you READ, the more things you will KNOW. 
-              The more that you LEARN, the more places you will GO.
+          <h6 class="card-text my-md-5 ml-5">Semakin banyak yang kamu BACA, semakin banyak yang kamu TAU. 
+              Semakin banyak kamu BELAJAR, semakin banyak tempat yang kamu DATANGI.
           </h6>
           @if (Route::has('login'))
           @auth
-          <a href="{{ route('post') }}" class="btn btn-ku ml-5">Start Again</a>
+          <a href="{{ route('post') }}" class="btn btn-ku ml-5">Mulai Kembali</a>
           @else
-          <a href="{{ route('register') }}" class="btn btn-ku ml-5">Get Started</a>
+          <a href="{{ route('register') }}" class="btn btn-ku ml-5">Mulai</a>
           @endauth
           @endif
         </div>

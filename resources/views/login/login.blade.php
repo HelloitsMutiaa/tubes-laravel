@@ -4,7 +4,7 @@
 <section class="sign">
     <form action="{{ route('login') }}" method="post">
         @csrf
-   <h1><span>Login</span></h1> 
+   <h1><span>Masuk</span></h1> 
    <fieldset class="reg">
     <div class="form">
         <input type="text" name="email" id="email">

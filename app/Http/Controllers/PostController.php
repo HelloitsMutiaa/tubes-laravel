@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Models\Borrow;
+use App\Models\User;
 use App\Traits\KaryaUpload;
 
 class PostController extends Controller
@@ -24,7 +26,9 @@ class PostController extends Controller
             ->get();
         } else {
         $posts = Post::all();}
-        return view('dashboard.dashboard', compact('posts'));
+        $user = User::where('level', 'Siswa')->get();
+        $pinjam = Borrow::where('status', 'Kembali')->get();
+        return view('dashboard.dashboard', compact('posts', 'user', 'pinjam'));
     }
 
     /**

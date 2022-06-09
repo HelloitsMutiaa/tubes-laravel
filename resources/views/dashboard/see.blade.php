@@ -23,11 +23,11 @@
             <table class="table-ch">
                 <tfoot>
                 <td>
-                <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-secondary">Edit</button></a></td>
+                <a href="{{ route('dashboard.edit', $post->id) }}"><button class="btn-secondary"><i class='bx bxs-edit-alt bx-sm'></i></button></a></td>
                 <td><form action="{{ route('dashboard.destroy', $post->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                <button class="btn-secondary" onclick="return confirm('Are You Sure ?');">Delete</button>
+                <button class="btn-secondary" onclick="return confirm('Are You Sure ?');"><i class='bx bxs-trash bx-sm'></i></button>
                 </form> </td></tfoot>
             </table>
             @endif

@@ -18,7 +18,7 @@
                 <table class="elementscontainer">
                     <tr>
                         <td>
-                            <input type="text" placeholder="Search" class="search" name="search">
+                            <input type="text" placeholder="Cari" class="search" name="search">
                         </td>
                         <td>
                             <a href="#">
@@ -52,11 +52,11 @@
                 <td>{{ $user->tgl_lahir }}</td>
                 <td>{{ $user->kelas }}</td>
                 <td>
-                    <a href="{{ route('edituser', $user->id) }}"><button class="btn-primary">Edit</button></a>
+                    <a href="{{ route('edituser', $user->id) }}"><button class="btn-primary"><i class='bx bxs-edit-alt bx-sm'></i></button></a>
                     <form action="{{ route('deleteuser', $user->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button>
+                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');"><i class='bx bxs-trash bx-sm'></i></button>
                     </form>
                 </td>
                 </tr>

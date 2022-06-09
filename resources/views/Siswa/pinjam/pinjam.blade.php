@@ -43,17 +43,17 @@
                     <form action="{{ route('deletepinjam', $pinjam->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Batal</button>
+                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');"><i class='bx bx-x bx-sm'></i></button>
                     </form> 
                     @elseif ($pinjam->status == "Tolak")
                     <form action="{{ route('deletepinjam', $pinjam->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');">Hapus</button>
+                    <button class="btn-primary" onclick="return confirm('Are You Sure ?');"><i class='bx bxs-trash bx-sm'></i></button>
                     </form>
                     @else
                     <a href="{{ route('addkembali', $pinjam->id) }}">
-                    <button class="btn-primary">kembali</button></a>
+                    <button class="btn-primary"><i class='bx bxs-hand-right bx-sm'></i></button></a>
                     </form>    
                     @endif
                 </td>

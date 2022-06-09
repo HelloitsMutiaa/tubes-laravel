@@ -8,7 +8,7 @@
                 
                 <div class="text header-text">
                     <span class="name">Perpuskuy</span>
-                    <span class="profession">readmore</span>
+                    <span class="profession">SDN 123456</span>
                 </div>
             </div>
 
@@ -27,13 +27,13 @@
                     <li class="nav-link {{ 'user' == request()->path() ? 'active' : '' }}">
                         <a href="{{ route('user') }}">
                             <i class='bx bx-user icon'></i>
-                            <span class="text nav-text">Users</span>
+                            <span class="text nav-text">Siswa</span>
                         </a>
                     </li>
                     <li class="nav-link {{ 'books' == request()->path() ? 'active' : '' }}">
                         <a href="{{ route('books') }}">
                             <i class='bx bx-library icon'></i>
-                            <span class="text nav-text">Books</span>
+                            <span class="text nav-text">Buku</span>
                         </a>
                     </li>
                     <li class="nav-link {{ 'borrows' == request()->path() ? 'active' : '' }}">
@@ -57,7 +57,7 @@
                     <li class="nav-link {{ 'books' == request()->path() ? 'active' : '' }}">
                         <a href="{{ route('books') }}">
                             <i class='bx bx-library icon'></i>
-                            <span class="text nav-text">Books</span>
+                            <span class="text nav-text">Buku</span>
                         </a>
                     </li>
                     <li class="nav-link {{ 'pinjam' == request()->path() ? 'active' : '' }}">
@@ -78,7 +78,7 @@
                 <li class="nav-link">
                     <a href="{{ route('logout') }}">
                         <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Log Out</span>
+                        <span class="text nav-text">Keluar</span>
                     </a>
                 </li>
             </div>
