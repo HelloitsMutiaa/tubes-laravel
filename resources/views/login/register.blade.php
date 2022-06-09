@@ -45,15 +45,15 @@
 </div>  
 <div class="form">
     <input type="text" name="class" id="class" placeholder="1 - 6">
-    <label for="class">Class</label>
-    @error('birthday')
+    <label for="class">Kelas</label>
+    @error('class')
         <div class="text-danger">
          <h4>{{ $message }} </h4>   
         </div> 
      @enderror
 </div>  
    <input type="hidden" value="siswa" name="level" id="level">
-    <h3>Already Have an Account?<a href="{{ route('login') }}">Sign In</a></h3>
+    <h3>Sudah Memiliki Akun?<a href="{{ route('login') }}">Masuk</a></h3>
     <br/>
     <div class="add3">
         <button class="btn-secondary" type="submit">Submit</button>
